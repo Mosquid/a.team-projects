@@ -44,7 +44,7 @@ export class ProjectStore implements IProjectStore {
     this.projects = filtered
   }
 
-  @action updateProject = (payload: IProject): void => {
+  @action updateProject = (payload: Partial<IProject>): void => {
     const updatedInd = this.projects.findIndex(({ id }) => id === payload.id)
 
     if (updatedInd >= 0) {

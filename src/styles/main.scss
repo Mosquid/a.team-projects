@@ -1,0 +1,14 @@
+@import 'projects-list';
+@import 'project-card';
+
+html,
+body {
+  height: 100%;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  color: #222;
+}
+
+body {
+  margin: 0;
+  background-color: #eaeaea;
+}

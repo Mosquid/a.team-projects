@@ -1,0 +1,35 @@
+.projectCard {
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #fff;
+  min-height: 100px;
+  margin-bottom: 20px;
+  .projectHeader {
+    .banner {
+      height: 64px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      position: relative;
+      .logo {
+        width: 48px;
+        height: 48px;
+        position: absolute;
+        top: 100%;
+        transform: translateY(-50%);
+        left: 24px;
+        border-radius: 25px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+        img {
+          max-width: 100%;
+          height: auto;
+          vertical-align: top;
+          border-radius: inherit;
+        }
+      }
+    }
+  }
+  .details {
+    padding: 24px;
+  }
+}

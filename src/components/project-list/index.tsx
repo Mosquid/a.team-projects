@@ -5,7 +5,11 @@ import { Project } from "../"
 
 export const ProjectList: React.FC<{}> = observer(() => {
   const { projectsStore } = useRootStore()
-  const { projects } = projectsStore
+  const { projects, deleteProject, updateProject } = projectsStore
+
+  const trashProject = (id: number) => {
+    deleteProject(id)
+  }
 
   useEffect(() => {
     projectsStore.fetchProjects()
@@ -14,11 +18,16 @@ export const ProjectList: React.FC<{}> = observer(() => {
   return (
     <>
       {projects.length > 0 && (
-        <h1>
+        <div className="projectList">
           {projects.map((project, index) => (
-            <Project key={index} {...project} />
+            <Project
+              updateProject={updateProject}
+              trashProject={trashProject}
+              key={index}
+              {...project}
+            />
           ))}
-        </h1>
+        </div>
       )}
     </>
   )
