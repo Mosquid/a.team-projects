@@ -1,11 +1,15 @@
-import React, {useEffect} from "react"
+import React, { useEffect } from "react"
+import { observer } from "mobx-react"
 import { useRootStore } from "../../hooks"
 
-export const ProjectList: React.FC<{}> = () => {
+export const ProjectList: React.FC<{}> = observer(() => {
   const { projectsStore } = useRootStore()
+  const { projects } = projectsStore
+
   useEffect(() => {
-    projectsStore.setProjects([])
+    projectsStore.fetchProjects()
   }, [])
-  
-  return <h1>Test</h1>
-}
+  console.log(projects)
+//doesn't update :(
+  return <h1>{projects.length}</h1>
+})

@@ -1,5 +1,6 @@
 import { IProject } from "../components/project/types"
 import { observable, action } from "mobx"
+import { fetchProjects } from "../api"
 
 export interface IProjectStore {
   fetched: boolean
@@ -16,8 +17,18 @@ export class ProjectStore implements IProjectStore {
     this.rootStore = rootStore
   }
 
-  @action setProjects = (projects: Array<IProject>): void => {
+  @action setProjects = (projects: Array<IProject>): Array<IProject> => {
     this.projects.push(...projects)
+    return this.projects
+  }
+
+  @action fetchProjects = async (): Promise<void> => {
+    const projects = await fetchProjects()
+
+    //add error handling??
+    if (projects === null) return
+
+    this.setProjects(projects)
   }
 
   @action deleteProject = (projectId: number): void => {
