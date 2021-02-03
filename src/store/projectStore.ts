@@ -28,11 +28,11 @@ export class ProjectStore implements IProjectStore {
 
   @action updateProject = (payload: IProject): void => {
     const updatedInd = this.projects.findIndex(({ id }) => id === payload.id)
-    
-    if (updatedInd >= 0 ) {
+
+    if (updatedInd >= 0) {
       this.projects[updatedInd] = {
         ...this.projects[updatedInd],
-        ...payload
+        ...payload,
       }
     }
   }

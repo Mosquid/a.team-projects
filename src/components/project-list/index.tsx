@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {useEffect} from "react"
+import { useRootStore } from "../../hooks"
 
-const ProjectList: React.FC<{}> = () => {
-  return (<></>)
+export const ProjectList: React.FC<{}> = () => {
+  const { projectsStore } = useRootStore()
+  useEffect(() => {
+    projectsStore.setProjects([])
+  }, [])
+  
+  return <h1>Test</h1>
 }
-
-export default ProjectList
