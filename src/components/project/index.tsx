@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { IProject } from "./types"
+import { Icon } from ".."
 
 interface ProjectPartialProps extends IProject {
   toggleMode?: () => void
@@ -39,7 +40,7 @@ const ProjectFooter: React.FC<Pick<ProjectPartialProps, "triggerDelete">> = ({
     <div className="projectFooter">
       <div className="actions">
         <div className="trash" onClick={triggerDelete}>
-          Trash!
+          <Icon name="trash" />
         </div>
       </div>
     </div>
@@ -55,6 +56,7 @@ export const Project: React.FC<ProjectProps> = (props) => {
     description,
     trashProject,
     updateProject,
+    role,
     backgroundImage,
     logo,
   } = props
@@ -65,6 +67,7 @@ export const Project: React.FC<ProjectProps> = (props) => {
       id,
       [fieldName]: value,
     })
+    setEditing(false)
   }
 
   return (
@@ -74,12 +77,13 @@ export const Project: React.FC<ProjectProps> = (props) => {
         backgroundImage={backgroundImage}
         title={title}
       />
-      <div className="details">
+      <div className={`details ${editing ? "editing" : ""}`}>
         <div
           className="editModeToggle"
           onClick={() => !editing && setEditing(true)}
         >
           <h3
+            className="editable"
             onBlur={(e) => handleSaveChange("title", e)}
             suppressContentEditableWarning={!!editing}
             contentEditable={!!editing}
@@ -87,19 +91,32 @@ export const Project: React.FC<ProjectProps> = (props) => {
             {title}
           </h3>
           <h6
-            onBlur={(e) => handleSaveChange("title", e)}
+            className="editable industry"
+            onBlur={(e) => handleSaveChange("industry", e)}
             suppressContentEditableWarning={!!editing}
             contentEditable={!!editing}
           >
             {industry}
           </h6>
           <p
-            onBlur={(e) => handleSaveChange("title", e)}
+            className="description editable"
+            onBlur={(e) => handleSaveChange("description", e)}
             suppressContentEditableWarning={!!editing}
             contentEditable={!!editing}
           >
             {description}
           </p>
+          <div className="role">
+            <Icon name="case" />
+            <span
+              className="editable"
+              onBlur={(e) => handleSaveChange("role", e)}
+              suppressContentEditableWarning={!!editing}
+              contentEditable={!!editing}
+            >
+              {role}
+            </span>
+          </div>
         </div>
         <ProjectFooter triggerDelete={() => trashProject(id)} />
       </div>

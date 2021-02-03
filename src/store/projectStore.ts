@@ -4,16 +4,16 @@ import { fetchProjects } from "../api"
 
 export interface IProjectStore {
   fetched: boolean
-  projects: Array<IProject | null>
+  storageKey: string
+  projects: Array<IProject>
 }
 
 export class ProjectStore implements IProjectStore {
-  private rootStore = null
-
+  storageKey = process.env.REACT_APP_STORAGE_KEY || ""
   fetched = false
   projects: Array<IProject> = []
 
-  constructor(rootStore?: any) {
+  constructor() {
     makeAutoObservable(this, {
       projects: observable,
       fetchProjects: action,
@@ -21,15 +21,32 @@ export class ProjectStore implements IProjectStore {
       deleteProject: action,
       updateProject: action,
     })
-    this.rootStore = rootStore
+    this.projects = this.getLocalData()
   }
 
-  @action setProjects = (projects: Array<IProject>): Array<IProject> => {
+  getLocalData = () => {
+    const localValue = localStorage.getItem(this.storageKey)
+
+    if (localValue) return JSON.parse(localValue)
+
+    return []
+  }
+
+  dehydrate = () => {
+    window.localStorage.setItem(
+      `${this.storageKey}`,
+      JSON.stringify(this.projects)
+    )
+  }
+
+  @action setProjects = (projects: Array<IProject>): void => {
     this.projects.push(...projects)
-    return this.projects
+    this.dehydrate()
   }
 
   @action fetchProjects = async (): Promise<void> => {
+    if (this.projects.length) return
+
     const projects = await fetchProjects()
 
     //add error handling??
@@ -42,6 +59,7 @@ export class ProjectStore implements IProjectStore {
     const filtered = this.projects.filter(({ id }) => id !== projectId)
 
     this.projects = filtered
+    this.dehydrate()
   }
 
   @action updateProject = (payload: Partial<IProject>): void => {
@@ -52,6 +70,7 @@ export class ProjectStore implements IProjectStore {
         ...this.projects[updatedInd],
         ...payload,
       }
+      this.dehydrate()
     }
   }
 }

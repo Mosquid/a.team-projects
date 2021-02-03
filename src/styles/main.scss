@@ -1,14 +1,16 @@
-@import 'projects-list';
-@import 'project-card';
+@import "typography";
+@import "projects-list";
+@import "project-card";
+@import "icon";
 
 html,
 body {
   height: 100%;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  color: #222;
 }
 
 body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  color: #222;
   margin: 0;
-  background-color: #eaeaea;
+  background-color: #f7f7f7;
 }
