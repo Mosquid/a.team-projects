@@ -63,7 +63,8 @@
       background-repeat: repeat;
       background-position: 0 0%;
     }
-    .industry {
+    .industry,
+    .role span {
       background-position: 0 bottom;
     }
     &.editing {

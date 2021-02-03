@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Model S dashboard",
+    "industry": "Automotive",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officia magni est in enim minima doloribus cupiditate, nostrum suscipit odit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officia magni est in enim minima doloribus cupiditate, nostrum suscipit odit.",
+    "role": "Software Engineer",
+    "backgroundImage": "https://via.placeholder.com/500x100",
+    "logo": "https://via.placeholder.com/100x100/FFFFFF"
+  },
+  {
+    "id": 2,
+    "title": "Analytics dashboard",
+    "industry": "SaaS",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officia magni est in enim minima doloribus cupiditate, nostrum suscipit odit.",
+    "role": "Front-end Engineer",
+    "backgroundImage": "https://via.placeholder.com/500x100",
+    "logo": "https://via.placeholder.com/100x100/00000EE"
+  },
+  {
+    "id": 3,
+    "title": "BTC alerting",
+    "industry": "Fintech",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officia magni est in enim minima doloribus cupiditate, nostrum suscipit odit.",
+    "role": "Data Scientist",
+    "backgroundImage": "https://via.placeholder.com/500x100",
+    "logo": "https://via.placeholder.com/100x100/FF00000"
+  },
+  {
+    "id": 4,
+    "title": "Self-driving",
+    "industry": "Automotive",
+    "description": "Lorem ipsum dolor sit amet nostrum suscipit odit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officia magni est in enim minima doloribus cupiditate, nostrum suscipit odit consectetur adipisicing elit. Aperiam officia magni est in enim minima doloribus cupiditate, nostrum suscipit odit.",
+    "role": "Computer Vision Engineer",
+    "backgroundImage": "https://via.placeholder.com/500x100",
+    "logo": "https://via.placeholder.com/100x100/00EE000"
+  }
+]
