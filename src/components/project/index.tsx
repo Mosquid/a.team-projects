@@ -1,7 +1,7 @@
 import React from "react"
 import { IProject } from "./types"
 
-const Project: React.FC<IProject> = ({
+export const Project: React.FC<IProject> = ({
   description,
   title,
   industry,
@@ -9,7 +9,8 @@ const Project: React.FC<IProject> = ({
   role,
   backgroundImage
 }) => {
-  return <></>
+  return <div className="projectItem">
+    {title}
+  </div>
 }
 
-export default Project

@@ -1,5 +1,5 @@
 import { IProject } from "../components/project/types"
-import { observable, action } from "mobx"
+import { action, makeAutoObservable, observable } from "mobx"
 import { fetchProjects } from "../api"
 
 export interface IProjectStore {
@@ -10,10 +10,17 @@ export interface IProjectStore {
 export class ProjectStore implements IProjectStore {
   private rootStore = null
 
-  @observable fetched = false
-  @observable projects: Array<IProject> = []
+  fetched = false
+  projects: Array<IProject> = []
 
   constructor(rootStore?: any) {
+    makeAutoObservable(this, {
+      projects: observable,
+      fetchProjects: action,
+      setProjects: action,
+      deleteProject: action,
+      updateProject: action,
+    })
     this.rootStore = rootStore
   }
 

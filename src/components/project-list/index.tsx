@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { observer } from "mobx-react"
 import { useRootStore } from "../../hooks"
+import { Project } from "../"
 
 export const ProjectList: React.FC<{}> = observer(() => {
   const { projectsStore } = useRootStore()
@@ -8,8 +9,17 @@ export const ProjectList: React.FC<{}> = observer(() => {
 
   useEffect(() => {
     projectsStore.fetchProjects()
-  }, [])
-  console.log(projects)
-//doesn't update :(
-  return <h1>{projects.length}</h1>
+  }, [projectsStore])
+
+  return (
+    <>
+      {projects.length > 0 && (
+        <h1>
+          {projects.map((project, index) => (
+            <Project key={index} {...project} />
+          ))}
+        </h1>
+      )}
+    </>
+  )
 })
